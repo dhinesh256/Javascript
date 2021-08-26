@@ -27,7 +27,7 @@ console.log(numbers)
 numbers.splice(6,6,1)
 console.log(numbers)
 
-let p=numbers.slice(2,5)
+let p=numbers.slice(1,5)
 console.log(p)
 
 /////CONCATENATION////
