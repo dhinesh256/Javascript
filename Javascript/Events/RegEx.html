@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="one"></p>
+        <h1 id="two"></h1>
+        <h2 id="three"></h2>
+        <p id="four"></p>
+        <script>
+
+            /////SEARCH
+            let text = "Hello World world!";
+            let n = text.search(/World/i); //case insensitive
+            let m = text.search(/O/gi)    ////USING GLOBAL ANG CASE MODIFIER
+            document.getElementById("one").innerHTML=n
+            document.getElementById("two").innerHTML=m
+            
+
+            //////REPLACE
+            let text1=text.replace(/world/i,"hi")
+            document.getElementById("three").innerHTML=text1
+            text1=text.replace(/world/gi,"hi")               /////USING GLOBAL
+            document.getElementById("three").innerHTML=text1
+
+
+            let text3 = "\nIs th\nis it is?";
+            let result = text3.match(/^is/m);    ////////MULTILINE MATCHING
+            document.getElementById("four").innerHTML = result;
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>for</h2>
+
+
+<p id="demo"></p>
+
+<script>
+
+///FOR-EACH
+let text = "";
+const fruits = ["apple", "orange", "cherry"];
+fruits.forEach(myFunction);
+
+document.getElementById("demo").innerHTML = text;
+ 
+function myFunction(item, i) {          /////the additional parameter is array index
+  text += i + ": " + item + "<br>"; 
+}
+
+////FOR-IN
+
+const person = {fname:"John", lname:"Doe", age:25};
+
+let name = "";
+for (let x in person) {
+  name += person[x] + " ";
+}
+
+document.getElementById("demo").innerHTML =name ;
+
+
+</script>
+
+</body>
+</html>
