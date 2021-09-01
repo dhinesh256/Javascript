@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>ASYNC PROMISE AWAIT</h2>
+
+
+<p id="demo"></p>
+
+<script>
+
+
+
+
+//CALLBACK FUNCTION
+function sum(a,b,print){
+    let result=a+b
+    print(result)
+}
+
+function print(value){
+    console.log(value)
+}
+
+sum(23,34,print)
+//ASYNC
+let one=()=>{
+    return "one"
+}
+let two= ()=>{
+    return new Promise((resolve,reject)=>{
+        let xhttp=new XMLHttpRequest()
+        xhttp.onreadystatechange =function(){
+            if(this.readyState==4 && this.status==200){
+                resolve(xhttp.responseText)
+            }
+
+            if(this.readyState==4 && this.status!=200){
+                reject("Error")
+            }
+        }
+        xhttp.open("GET","https://jsonplaceholder.typicode.com/posts/1",true)
+        
+        xhttp.send()
+        /*setTimeout(()=>{
+            resolve("two")
+        },3000)*/
+    })
+
+    Promise.then(function(data){
+        console.log(JSON.parse(data));
+    }).catch(function(err){
+        console.log(err)
+    })
+}
+
+let three= ()=>{
+    return "three"
+}
+
+let callFunc =async() =>{
+    let num1=one()
+    console.log(num1)
+    let num2= await two()
+    console.log(num2)
+    let num3=three()
+    console.log(num3)
+}
+
+callFunc()
+//document.getElementById("demo").innerHTML = carName;
+</script>
+
+</body>
+</html>
