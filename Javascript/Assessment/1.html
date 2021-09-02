@@ -16,7 +16,7 @@ let one=()=>{
     return "one"
 }
 let two= ()=>{
-    return new Promise((resolve,reject)=>{
+    let promise= new Promise((resolve,reject)=>{
         let xhttp=new XMLHttpRequest()                    //CREATING REQUEST
         xhttp.onreadystatechange =function(){
             if(this.readyState==4 && this.status==200){   //CHECKING THE STATUS OF REQUEST
@@ -31,11 +31,7 @@ let two= ()=>{
         
         xhttp.send()
     })
-
-    Promise.then(function(data){
-        console.log(JSON.parse(data))
-    })
-    Promise.catch(function(err){console.log(err)})
+    return promise
         
 }
 
