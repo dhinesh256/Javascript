@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+</head>
+<body>
+	<script>
+
+		function apple(ID) {
+			let applehttp= new XMLHttpRequest()
+			applehttp.onreadystatechange=function(){
+				if(applehttp.readyState==4 && applehttp.status==200){
+					document.getElementById("image").innerHTML=applehttp.responseText
+				}
+			}
+			applehttp.open("GET","apple.html",true)
+			applehttp.send()
+			
+		}
+
+		//navigator.geolocation.getCurrentPosition(show)
+
+		function show(position){
+			console.log(position.coords.latitude)
+		}
+		var m = document.querySelectorAll(".one")
+		//document.getElementById("demo").innerHTML=m
+		console.log(m)
+		window.onload=function(){
+		 n=document.getElementById("output")
+		 r=document.getElementById("input")
+		}
+		function get() {
+		localStorage.first= r.value
+		}
+		function out() {
+			n.innerHTML=localStorage.first
+		}
+
+		function handleFile(e){
+			var files = e.target.files
+			var output = []
+			for(var i=0,f;f=files[i];i++){
+				output.push(
+					'<li><strong>',escape(f.name),'</strong>(',
+					f.type || 'n/a',')-',
+					f.size,'bytes,last modified:',
+					f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString():'n/a','</li>')
+					
+				}
+				document.getElementById('list').innerHTML='<ul>'+output.join('')+'</ul'
+		}
+		document.getElementById('files').addEventListener(change,handleFile,false)
+		
+
+	</script>	
+
+<style>
+
+.one
+	{color:blue;
+	font-size:large;
+	font-family:cursive;
+	font-weight:600;
+	background-color:chartreuse}
+
+.text{
+	color: blue;
+	background-color: red
+}
+
+</style>
+
+ <div id="image"></div> 
+ <button id="imagebtn" onclick="apple(this.id)">Apple</button> 
+<h2>for</h2>
+<span class="text">Hello text</span>
+<div class="two">Div section one</div>
+<div class="one">Div section two</div>
+<div class="one" id="One-one">Div section three</div>
+<p id="demo">Hello</p>
+<input type="text" id="input">
+<button id="btn" onclick="get()"> GET</button>
+<div>
+	output <output id="output"></output>
+</div>
+<button id="btn2" onclick="out()">SHOW</button>
+<br>
+
+<input type="file" id="files" name="files[]" multiple>
+<output id="lists"></output>
+
+</body>
+
+</html>
