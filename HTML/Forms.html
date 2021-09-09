@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            FORMS
+        </title>
+    </head>
+    <body>
+        <script>
+            function CheckUsername(){
+                var username=document.getElementById("UserName").value
+                if(username==""){
+                    //username.style.border = "solid 3px red"
+                    document.getElementById("labelname").style.visibility="visible"
+                    return false
+                }
+            }
+            function showNumber(){
+                let num = document.getElementById("slider").value
+                document.getElementById("demo").innerHTML= "hello"
+            }
+            //let myOption=()=>{alert("You chose "+document.getElementById("options").value)}
+        </script>
+        
+        <p id="demo"></p>
+
+        <form onsubmit="return CheckUsername()">
+            
+            <table width="1000" height="100" border="0" >
+                <tr>
+                    <th>Name:</td>
+                    <td><input type="text" id="UserName" placeholder="Enter Name" size="100" maxlength="5" 
+                        name="name" /></br>
+                    <label id="labelname" style="color: red; visibility: hidden;">Invalid</label> </td>
+                </tr>
+                <tr>
+                    <td>Email ID</td>
+                    <td><input type="text" size="100"/></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" placeholder="enter password" size="100"/></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="number" size="50" min="0" max="50"/> </td>
+                </tr>
+
+                <tr>
+                    <td>Graduate:</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="radio" id="Graduat_1"/>Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="radio" id="Graduate_2"/>No
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Interested in:</td>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="check" id="check_1"/>Football
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check" id="check_2"/>Cricket
+                        </label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Options:</td>
+                    <td>
+                        <select id="options" name="options">
+                            <option value="option1" id="option1">Option1</option>
+                            <option value="option2" id="option2">option2</option>
+                        </select>
+                        <input type="button" onclick="myOption()" value="Enter" />
+                </tr>
+
+                <tr>
+                    <td>Choose color</td>
+                    <td>
+                        <input type="color"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Comments</td>
+                    <td><textarea name="comments" rows="5" cols="150"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Number Range</td>
+                    <td><input type="range" id="slider" name="rangeval" onratechange="showNumber()"/>
+                        <output id="output"></output></td>
+                </tr>
+
+                <tr>
+                    <td>Choose a date </td>
+                    <td><input type="date" min="2000-01-12" max="2050-12-12"/></td>
+                </tr>
+
+                <tr>
+                    <td>Submit</td>
+                    <td><input type="submit"/></td>
+                </tr>
+
+            </table>
+        </form>
+    </body>
+</html>

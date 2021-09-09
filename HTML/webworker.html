@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Counting numbers<output id="output"></output></p>
+        <button id="btn1" onclick="start()">Start</button>
+        <button id="btn2" onclick="end()">End</button>
+
+        
+        <script>
+            var w;
+            start=function(){
+                if(typeof(Worker)!=="undefined"){
+                    if(typeof(w)=="undefined"){
+                        w = new Worker("demo_workers.js");
+                    }
+                    w.onmessage = function(event){
+                        document.getElementById("output").innerHTML=event.data
+                    }
+                }
+                else{
+                    alert("Browser doesn't support WebWorker")
+                }
+            }
+            console.log("one")
+            setTimeout(()=>{
+                console.log("two")
+            },10000)
+            
+
+            end=function(){
+                w.terminate()
+                w=undefined
+            }
+        </script>
+
+
+    <p>Regular worker  <output id="resultReg"></output></p>
+    <button id="btn1" onclick="startReg()">Regular</button>
+    <p>Shared worker   <output id="resultShared"></output></p>
+    <button id="btn2" onclick="startShared()">WebWorker</button>
+
+
+        <script>  
+
+        
+            startShared=function(){
+                for(c=1;c<=5;c++){
+                        var w1 = new Worker("shared_demo_workers.js");
+                        w1.onmessage = function(event){
+                            console.log('done'+event.data)
+                            document.getElementById("resultShared").innerHTML='done'
+                    }
+                    w1.postMessage(c)
+                    }
+                }
+
+            startReg  = function(){
+                for(c=1;c<=5;c++){
+                    sleep(1000);
+                    console.log('done'+c)
+                }
+                document.getElementById("resultReg").innerHTML='done'
+            } 
+            
+    function sleep(milliseconds) {
+    let timeStart = new Date().getTime();
+    while (true) {
+      let elapsedTime = new Date().getTime() - timeStart;
+      if (elapsedTime > milliseconds) {
+        break;
+      }
+    }
+  }
+
+        </script>
+    </body>
+</html>
