@@ -1,60 +1,163 @@
 *{
     margin: 0;
     padding: 0;
-    
 }
-
 .container{
     position: absolute;
-    width: 40%;
-    height: 610px;
-    background-color: rgb(1,255,192);
-    font-family: sans-serif;
-    color: rgb(7, 7, 7);
-    
-
+    width: 34%;
+    height: 100%;
+    background-color:rgb(1,255,192);
+    z-index: -1;
 }
 
+.window{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    height: 80%;
 
-.login{
+    z-index: 9;
+    box-shadow:5px 5px 28px  #8a8888;
     position: absolute;
     top: 8%;
-    left: 6%;
-    width: 1100px;
-    height: 500px;
-    display: flex;
-    box-shadow :0 0 40px 3px rgb(85, 87, 87);
-    z-index: 5;
-
+    left: 10%;
 }
-
+  
 .logo{
-    
-    flex: 53%;
-    background-color :rgb(1,255,192);
-    height: 500px;
-    
+    background-color: rgb(1,255,192);
+    flex: 30%;
 }
-.login_box{
-    flex:70%;
-    height: 500px;    
+
+.login{
+    
+    flex: 70%;
+}
+
+.img{
+    position: absolute;
+    display: flex;
+    width: 17%;
+    height: 20%;
+    top: 32%;
+    left: 9%;
+}
+.text{
+    font-family: Arial;
+    font-size: 1.25vw;
+    display: flex;
+    position:absolute;
+    top: 56%;
+    left: 9%;
+}
+
+#help{
+    text-align: right;
+    margin: 2%;
+    padding: 1%;
+    margin-right: 6%;
+    font-size: medium;
+}
+
+.loginmsg{
+    text-align:center; 
+    margin-top: 8%; 
+    font-family:sans-serif;
 }
 
 #form{
     position: absolute;
-    top: 130px;
-    right: 180px;
+    width: 50%;
+    height: 60%;
+    left: 40%;
+
+}
+.credentials{
+    font-family: Arial;
+    font-size: 1.25vw;
+    padding: 3%;
+}
+.email,.password{
+    font-family: Arial;
+    font-size: 1.25vw;
+    width: 98%;
+    height: 12%;
+    border: 0%;
+}
+.fpassword{
+    font-family: Arial;
+    font-size: 1.25vw;
+    text-align: right;
+    padding: 2%;
+}
+.loginbtn{
+    font-family: Arial;
+    font-size: 1.25vw;
+    background-color: rgb(1, 255, 192);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius :4px;
+    width: 100%;
 }
 
+@media screen and (max-width: 500px){
+    .logo{
+        display: none;
+        visibility: hidden;
+    }
+    .window{
+        border-radius: 5%;
+    }
+    .login{
+        border-radius: 5%;
+        background-color: rgb(231, 231, 162);
+    }
+    .help{
+        margin: 2%;
+        padding: 0%;
+        margin-right: 6%;
+        font-size: smaller;
+    }
+    #form{
+        position: absolute;
+        width: 94%;
+        height: 60%;
+        left:2.8%;
+        top: 30%;
+    }
 
-#image{
-    position: absolute;
-    top: 130px;
-    left: 120px;
-}
-#logo_slogan{
-    position: absolute;
-    font-style: italic;
-    top: 250px;
-    left: 140px;
+    .loginmsg{
+        text-align:center;
+        margin-top: 8%;
+    }
+    .credentials{
+        font-family: Arial;
+        font-size: 3vw;
+        padding: 3%;
+    }
+    .email,.password{
+        font-family: Arial;
+        font-size: 2vw;
+        width: 98%;
+        height: 12%;
+        border: 0%;
+    }
+    .fpassword{
+        font-family: Arial;
+        font-size: 2vw;
+        text-align: right;
+        padding: 2%;
+    }
+    .loginbtn{
+        font-family: Arial;
+        font-size: 2vw;
+        
+    }
+    
+    .container{
+        background-color: white;
+    }
 }
