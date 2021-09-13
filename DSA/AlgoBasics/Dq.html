@@ -2,38 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Divide and conqure</title>
+    <title>Divide and conquer</title>
 </head>
 <body>
     <h1>ARRAYS!</h1>
     <script>
+    /*
+   In divide and conquer ,problem is divided into smaller sub-problems and
+    then each problem is solved independently.
+    Those smallest possible sub-problems are solved.
+    The solution of all sub-problems is finally merged in order to obtain the solution of an original
+    problem. 
+    Examples include merge sort,binary search etc 
+    
+        In binary search,problem is divided into smaller sub-problem by 
+        ommiting half of the sorted array 
 
+    */
+
+let binSearch = function (arr, x, start, end) {
 if (start > end) return false;
   
-  // Find the middle index
   let mid=Math.floor((start + end)/2);
-
-  // Compare mid with given key x
   if (arr[mid]===x) return true;
        
-  // If element at mid is greater than x,
-  // search in the left half of mid
   if(arr[mid] > x)
-      return recursiveFunction(arr, x, start, mid-1);
+      return binSearch(arr, x, start, mid-1);
   else
-
-      // If element at mid is smaller than x,
-      // search in the right half of mid
-      return recursiveFunction(arr, x, mid+1, end);
+      return binSearch(arr, x, mid+1, end);
+}
 
 
-// Driver code
-let arr = [1, 3, 5, 7, 8, 9];
+let arr = [1, 7, 8, 9 ,3, 5];
 let x = 5;
-
-if (recursiveFunction(arr, x, 0, arr.length-1))
-  document.write("Element found!<br>");
-else document.write("Element not found!<br>");
+arr.sort(function(a,b){return a-b})
+//console.log(arr)
+if (binSearch(arr, x, 0, arr.length-1))
+  console.log("Element found");
+else console.log("Element not found");
 
 
     </script>
