@@ -7,11 +7,7 @@
         <h1>Merge Sort</h1>
         <script>
  
-            // JavaScript program for Merge Sort
-             
-            // Merges two subarrays of arr[].
-            // First subarray is arr[l..m]
-            // Second subarray is arr[m+1..r]
+           
             function merge(arr, l, m, r)
             {
                 var n1 = m - l + 1;
@@ -67,9 +63,7 @@
                 }
             }
              
-            // l is for left index and r is
-            // right index of the sub-array
-            // of arr to be sorted */
+            
             function mergeSort(arr,l, r){
                 if(l>=r){
                     return;//returns recursively
@@ -80,8 +74,7 @@
                 merge(arr,l,m,r);
             }
              
-            // UTILITY FUNCTIONS
-            // Function to print an array
+           
             function printArray( A, size)
             {
                 for (var i = 0; i < size; i++)
@@ -100,8 +93,7 @@
                 document.write( "<br>Sorted array is <br>");
                 printArray(arr, arr_size);
              
-            // This code is contributed by SoumikMondal
-             
+            
             </script>
     </body>
 </html>
