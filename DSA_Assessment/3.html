@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 3</title>
+    </head>
+    <body> 
+        <h1>Question 3</h1>
+        <script>
+            class Node {
+                    
+                    constructor(element) {
+                        this.element = element;
+                        this.next = null
+                    }
+            }
+            
+            class LinkedList {
+                constructor() {
+                    this.head = null;
+                    this.size = 0;
+                }
+                
+                    
+                add(element) {
+                    var node = new Node(element);
+        
+                    var current;
+            
+                    if (this.head == null) 
+                        this.head = node;
+                    else {
+                        current = this.head;
+                
+                    while (current.next) {  
+                            current = current.next;
+                    }
+                            
+                    current.next = node;
+                    }
+                    this.size++;
+                }
+                printList() {
+                        var curr = this.head;
+                        var str = "";
+                        while (curr) {
+                            str += curr.element + "->";
+                            curr = curr.next;
+                        }
+                        document.write(str,"NULL","<br>");
+                }
+                get(index){
+                    if(index<0 || index>this.size){
+                        return "Invalid index"
+                    }
+                    var count = 0;
+                    var current = this.head;
+            
+                 
+                while (current != null) {
+                    
+                if (count == index)
+                    return current.element
+                count++;
+                current = current.next;
+                }
+                }
+            }
+            let arr=[1,10,30,14]
+            let LL = new LinkedList()
+            for(var i=0;i<arr.length;i++){
+            LL.add(arr[i])
+            }
+            document.write("Given list is : <br>")
+            LL.printList()
+            document.write("<br>")
+            let index=2
+            document.write(`Element at index ${index} is : `,LL.get(index))
+
+        </script>
+    </body>
+</html>            

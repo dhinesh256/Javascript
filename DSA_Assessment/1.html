@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Question 1</title>
+    </head>
+    <body>
+        <h3>Question 1</h3>
+        <script>
+            class maxHeap {
+
+            constructor () {
+                
+                this.heap = []
+            }
+
+            
+            insert (node) {
+
+                this.heap.push(node)
+
+
+                if (this.heap.length > 0) {
+                    let current = this.heap.length - 1
+
+                    while (current > 0 && this.heap[Math.floor((current-1)/2)] < this.heap[current]) {
+
+                        [this.heap[Math.floor((current-1)/2)], this.heap[current]] = [this.heap[current], this.heap[Math.floor((current-1)/2)]]
+                        current = Math.floor((current-1)/2)
+                    }
+                }
+            }
+
+            
+            display(){
+                return this.heap
+            }
+            }
+            let maxh = new maxHeap()
+            maxh.insert(77)
+            maxh.insert(50)
+            maxh.insert(60)
+            maxh.insert(22)
+            maxh.insert(30)
+            maxh.insert(44)
+            maxh.insert(55)
+            document.write("Before Insertion : ",maxh.display(),"<br>")
+            maxh.insert(55)
+            document.write("After Insertion :  ",maxh.display(),"<br>")
+            
+
+        </script>
+    </body>
+</html>

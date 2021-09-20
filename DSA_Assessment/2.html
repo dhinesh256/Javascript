@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 2</title>
+    </head>
+    <body> 
+        <h1>Question 2</h1>
+        <script>
+
+                class Node {
+                    // constructor
+                    constructor(element) {
+                        this.element = element;
+                        this.next = null
+                    }
+                }
+                // linkedlist class
+                class LinkedList {
+                    constructor() {
+                        this.head = null;
+                        this.size = 0;
+                    }
+
+                    add(element) {
+                        var node = new Node(element);
+            
+                        var current;
+                
+                        if (this.head == null) //empty LL
+                            this.head = node;
+                        else {
+                            current = this.head;
+                
+                            while (current.next) {  //iterating upto finding a null next
+                                current = current.next;
+                            }
+                            
+                            current.next = node;
+                        }
+                        this.size++;
+                    }
+                    printList() {
+                        var curr = this.head;
+                        var str = "";
+                        while (curr) {
+                            str += curr.element + "->";
+                            curr = curr.next;
+                        }
+                        document.write(str,"NULL","<br>");
+                    }
+
+                    removeDuplicates(){
+                        var current,count;
+                
+                        if (this.head == null) //empty LL
+                            return "Operation can't be done"
+                        else {
+                            current = this.head;
+                            while(current.next){
+                            if(current.element === current.next.element) { 
+                                current.next = current.next.next;
+                                //current.next.next = null
+                                count++
+                            }
+                            else{
+                            current = current.next;
+                            }
+                            }
+                        }
+                        
+                    }
+                }  
+                let arr=[11,11,11,21,43,43,60]
+                let LL = new LinkedList()
+                for(let i=0;i<arr.length;i++){
+                LL.add(arr[i])
+                }
+                document.write("Given Linked List : <br>")
+                LL.printList()
+                LL.removeDuplicates()
+                document.write("Linked List after removing duplicates : <br>")
+                LL.printList()
+        </script>
+    </body>
+</html>
