@@ -1,10 +1,14 @@
 import React ,{useState,useRef} from 'react';
 import {View,Text,Image,StyleSheet, Pressable ,
-   ScrollView ,Switch, FlatList ,TouchableOpacity,
+   ScrollView ,Switch, FlatList ,
     TextInput, BackHandler, Alert, DrawerLayoutAndroid, 
-    Button, PermissionsAndroid ,ToastAndroid} from 'react-native';
+    Button, PermissionsAndroid ,ToastAndroid,
+  TouchableWithoutFeedback,Keyboard ,KeyboardAvoidingView, 
+  Dimensions, TouchableHighlight ,RefreshControl} from 'react-native';
 import img from './loc-mark.png';
 import uuid from'uuid'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import ModalExample from './components/ModalExample';
 
 const App = () => {
   const [item,setItem] = useState(0)
@@ -18,11 +22,22 @@ const App = () => {
     {id:uuid() , value : 'Order'},
     {id:uuid() , value : 'About'},
     {id:uuid() , value : 'Contact'},
+    {id:uuid() , value : 'Log in'},
+    {id:uuid() , value : 'Home'},
+    {id:uuid() , value : 'Tutorial'},
+    {id:uuid() , value : 'Order'},
+    {id:uuid() , value : 'About'},
+    {id:uuid() , value : 'Contact'},
+    {id:uuid() , value : 'Log in'},
+    {id:uuid() , value : 'Home'},
+    {id:uuid() , value : 'Tutorial'},
+    {id:uuid() , value : 'Order'},
+    {id:uuid() , value : 'About'},
+    {id:uuid() , value : 'Contact'},
     {id:uuid() , value : 'Log in'}
    
   ])
-
-  const Item = ({ title }) => (
+  const Item = ({ title }) => ( 
     <View style={{padding:7}}>
       <Text style={{backgroundColor:'#ccf',fontSize:30,padding:7}}>{title}</Text>
     </View>
@@ -48,7 +63,7 @@ const App = () => {
   const drawer = useRef(null)
   const navigationView = () =>{
       return(  
-        <View>
+        <View style={{flex:1}}>
           <Button 
           title='close drawer'
           onPress={()=>drawer.current.closeDrawer()}
@@ -84,14 +99,44 @@ const App = () => {
       ToastAndroid.CENTER
     );
   }
+
+  const customTextButton = (
+    <Icon.Button name="twitter" backgroundColor="#3b5998"
+    onPress={()=>{alert("congrats!!!")}}>
+      <Icon name='facebook' color='yellow'></Icon>
+      <Text style={{ fontFamily: 'Arial', fontSize: 15 ,color:'white' }}>
+         {`   Login with Twitter`}
+      </Text>
+    </Icon.Button>
+    );
+
+    const [refreshing, setRefreshing] = React.useState(false);
+    const wait = (timeout) => {
+      return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+  
+
+
   return (
-    
-    
+    // <KeyboardAvoidingView
+    //   behavior="height"
+    //   style={styles.container}
+    // >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <DrawerLayoutAndroid
         ref={drawer}
         drawerWidth={300}
         drawerPosition={'left'}
         renderNavigationView={navigationView}>
+        <ScrollView refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}/>}
+          >
         <View>  
             <Button
             title='drawer'
@@ -102,15 +147,26 @@ const App = () => {
       
       <Image source={{uri:'https://randomuser.me/api/portraits/men/1.jpg'}} style={styles.img2}/>
       <Text style={styles.text}>Hello World</Text>
+
+      <TouchableHighlight activeOpacity={0.5} underlayColor='black' onPress={() => alert('Pressed!')}>
+        <Text style={{backgroundColor:'gold'}}> Touchable Highlight</Text>
+      </TouchableHighlight>
       
       <Image source={img} style={styles.img}/>
-      <TextInput keyboardType="numeric" 
+      <TextInput  
       placeholder="Enter a number" 
       // autoFocus={true}
       style={styles.ip}></TextInput>
-
+      
+      {customTextButton}
       <Button title='seek permisson' onPress={permissionReq}/>
-
+      <View style={{flexDirection:'row',
+                    justifyContent:'space-around',
+                    alignItems:'center'}}>
+        <Text style={styles.one}>One</Text>
+        <Text style={styles.two}>Two</Text>
+        <Text style={styles.one}>Three</Text>
+      </View>
       <Pressable onPress={() => {
           setItem((current) => current + 1);
         }} style={({ pressed }) => 
@@ -120,11 +176,11 @@ const App = () => {
               : 'yellow'
           }
         }>
-          <Text>Press</Text>
+          <Text style={{fontSize:20,color:'red'}}>Press</Text>
       </Pressable>
-      <Text>{item}</Text>
+      <Text >{item}</Text>
 
-      <ScrollView >
+      <ScrollView style={{height:1000}}>
         <Text style={{fontSize:50 , backgroundColor:'#ccc'}}>
         Create native apps for Android and iOS using React
         React Native combines the best parts of native development 
@@ -134,7 +190,10 @@ const App = () => {
         projects or you can create a whole new app from scratch.
         </Text>
       </ScrollView>
-
+      <Text>hello</Text>
+      <Text>hello</Text>
+      <Text>hello</Text>
+      <Text>hello</Text>
       <Switch
         trackColor={{ false: "yellow", true: "green" }}
         thumbColor={status ? "red" : "blue"}
@@ -144,11 +203,13 @@ const App = () => {
       {(status ? <Text>Appear</Text> : <Text> </Text>)}
 
         <Button title='toast' onPress={toastFunc} />
-   
-      
-     
+        <ModalExample/>
+
     </View>
+    </ScrollView>
     </DrawerLayoutAndroid>
+    </TouchableWithoutFeedback>
+    
     
   );
 };
@@ -176,6 +237,14 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  one:{
+    backgroundColor:'skyblue',
+    padding:20
+  },
+  two:{
+    backgroundColor:'violet',
+    padding:5
   }
 })
 export default App;
