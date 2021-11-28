@@ -7,3 +7,14 @@ const firebaseConfig = {
     appId: "1:498829506683:web:53195ce98a329a022f8ade",
     measurementId: "G-CY3RRSK1EL"
   };
+  
+  
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyDSg55OV7DMvuW7fu5Qxyp_awT4z0WAQtE",
+  authDomain: "typeapp-c0a25.firebaseapp.com",
+  projectId: "typeapp-c0a25",
+  storageBucket: "typeapp-c0a25.appspot.com",
+  messagingSenderId: "957314644792",
+  appId: "1:957314644792:web:0e14f92e0434f80d2d1fcd"
+};
