@@ -7,9 +7,12 @@
   .main div {
     margin: 25px;
     cursor: pointer;
+    color: rgb(218, 49, 49);
   }
   .main div:hover {
-    color: rgb(168, 168, 168);
+    color: rgb(240, 6, 65);
+    font-size: large;
+    font-weight: bold;
   }
   .main h1 {
     color: green;
