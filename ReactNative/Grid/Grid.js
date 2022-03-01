@@ -3,12 +3,13 @@ import React from 'react'
 import ButtonComp from './ButtonComp';
 
 
-export default function Grid({navigation}) {
+function Grid({navigation}) {
   return (
-
       <View style={styles.container}>
       <ButtonComp name="DeepLink" navigation={navigation}/>
-      {/* <ButtonComp name="SagaTesting" navigation={navigation}/> */}
+      <ButtonComp name="SagaTesting" navigation={navigation}/>
+      <ButtonComp name={"ReduxTesting"} navigation={navigation}/>
+      <ButtonComp name={"useEffect"} navigation={navigation}/>
       </View>  
   )
 }
@@ -21,3 +22,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   }
 });
+
+export default Grid
