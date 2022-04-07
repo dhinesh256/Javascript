@@ -1,0 +1,4 @@
+  //reverse a string
+  let input = "Hello world"
+  let output = input.split('').reverse().join('')
+  console.log(output)
